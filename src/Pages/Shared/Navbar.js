@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import DarkMode from "../../DarkMode/DarkMode";
 
 const Navbar = () => {
   const menuItems = (
@@ -22,10 +23,15 @@ const Navbar = () => {
       <li>
         <Link to="/login">Login</Link>
       </li>
+      {/* <li>
+        <Link to>
+          <DarkMode></DarkMode>
+        </Link>
+      </li> */}
     </>
   );
   return (
-    <div>
+    <div className="px-12">
       <div class="navbar">
         <div class="navbar-start">
           <div class="dropdown">
@@ -52,7 +58,7 @@ const Navbar = () => {
               {menuItems}
             </ul>
           </div>
-          <h1 class="btn btn-ghost normal-case text-xl">Doctors Portal</h1>
+          <h1 class=" normal-case text-xl">Doctors Portal</h1>
         </div>
         <div class="navbar-center hidden lg:flex">
           <ul class="menu menu-horizontal p-0">{menuItems}</ul>
