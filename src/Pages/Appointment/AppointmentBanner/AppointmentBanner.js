@@ -7,8 +7,12 @@ import chair from "../../../assets/images/chair.png";
 const AppointmentBanner = ({ date, setDate }) => {
   return (
     <div class="hero min-h-screen ">
-      <div class="hero-content flex-col lg:flex-row-reverse gap-5 lg:gap-64">
-        <img src={chair} class="max-w-sm rounded-lg shadow-2xl" alt="" />
+      <div class="hero-content flex-col lg:flex-row-reverse gap-5 lg:gap-64   ">
+        <img
+          src={chair}
+          class="lg:max-w-lg rounded-lg shadow-2xl rounded-xl w-full bg-gradient-to-r p-[5px] from-secondary to-primary"
+          alt=""
+        />
         <div
           style={{
             background: "#fff",
@@ -21,6 +25,7 @@ const AppointmentBanner = ({ date, setDate }) => {
             mode="single"
             selected={date}
             onSelect={setDate}
+            className="lg:max-w-lg"
           ></DayPicker>
         </div>
       </div>
