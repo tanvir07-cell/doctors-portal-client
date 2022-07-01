@@ -5,7 +5,7 @@ import appointment from "../../assets/images/appointment.png";
 const HomeTestimonial = () => {
   return (
     <section
-      className="flex items-center mt-32"
+      className="lg:flex items-center mt-64"
       style={{ background: `url(${appointment})` }}
     >
       <div className="flex-1">
@@ -22,6 +22,9 @@ const HomeTestimonial = () => {
           look like readable English. Many desktop publishing packages and web
           page
         </p>
+        <button class="mt-7 mb-7 btn btn-primary bg-gradient-to-r from-secondary to-primary text-uppercase font-bold text-white">
+          Get Started
+        </button>
       </div>
     </section>
   );
