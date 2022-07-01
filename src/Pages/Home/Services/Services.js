@@ -34,7 +34,7 @@ const Services = () => {
 
       {/* for dynamic service card: */}
       <div
-        className="grid grid-cols-1 lg:grid-cols-3 gap-5 px-12"
+        className="grid grid-cols-1 lg:grid-cols-3 gap-5"
         style={{ color: "#3A4256" }}
       >
         {serviceDetails.map((service) => (

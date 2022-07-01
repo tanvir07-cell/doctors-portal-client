@@ -1,9 +1,13 @@
 import React from "react";
 import chair from "../../../assets/images/chair.png";
+import "./Banner.css";
 
 const Banner = () => {
   return (
-    <div class="hero min-h-screen px-12 bg-hero  bg-no-repeat bg-left-bottom ">
+    <div
+      class="hero min-h-screen  bg-hero  bg-no-repeat bg-left-bottom hero-banner"
+      style={{ clipPath: "polygon(0 0, 100% 0, 100% 85%, 0 80vh)" }}
+    >
       <div class="hero-content flex-col lg:flex-row-reverse">
         <img
           src={chair}
@@ -18,7 +22,7 @@ const Banner = () => {
             excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
             a id nisi.
           </p>
-          <button class="btn btn-primary bg-gradient-to-r from-secondary to-primary text-uppercase font-bold text-white">
+          <button class="btn btn-primary bg-gradient-to-r from-secondary to-primary text-uppercase font-bold text-white mb-5">
             Get Started
           </button>
         </div>

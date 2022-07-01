@@ -1,8 +1,8 @@
 import React from "react";
-import quote from "../../assets/icons/quote.svg";
-import people1 from "../../assets/images/people1.png";
-import people2 from "../../assets/images/people2.png";
-import people3 from "../../assets/images/people3.png";
+import quote from "../../../assets/icons/quote.svg";
+import people1 from "../../../assets/images/people1.png";
+import people2 from "../../../assets/images/people2.png";
+import people3 from "../../../assets/images/people3.png";
 import Testimonial from "../Testimonial/Testimonial";
 
 const Testimonials = () => {
@@ -33,7 +33,7 @@ const Testimonials = () => {
     },
   ];
   return (
-    <section className="px-12 mb-5">
+    <section className=" mb-5">
       <div className="flex justify-between items-center">
         <div>
           <h4 className="text-primary text-xl font-bold">Testimonial</h4>

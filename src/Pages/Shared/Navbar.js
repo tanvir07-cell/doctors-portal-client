@@ -31,7 +31,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="px-12">
+    <div>
       <div class="navbar">
         <div class="navbar-start">
           <div class="dropdown">
