@@ -1,9 +1,12 @@
 import { format } from "date-fns";
 import React, { useEffect, useState } from "react";
+import BookingModal from "../BookingModal/BookingModal";
 import Service from "../Service/Service";
 
 const AvailableAppointMent = ({ date }) => {
   const [services, setServices] = useState([]);
+  // for opening modal:
+  const [treatment, setTreatment] = useState(null);
   useEffect(() => {
     fetch("Services.json")
       .then((res) => res.json())
@@ -17,9 +20,21 @@ const AvailableAppointMent = ({ date }) => {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
         {services?.map((service) => (
-          <Service key={service?._id} service={service}></Service>
+          <Service
+            key={service?._id}
+            service={service}
+            setTreatment={setTreatment}
+          ></Service>
         ))}
       </div>
+      {/* johkhon treatment set hoye jabe tokhon jate modal ti dekhay */}
+      {treatment && (
+        <BookingModal
+          treatment={treatment}
+          date={date}
+          setTreatment={setTreatment}
+        ></BookingModal>
+      )}
     </div>
   );
 };
