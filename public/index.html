@@ -26,15 +26,20 @@
     -->
     <style>
       .loading {
-        animation: ElementAnimation 1s ease-in-out infinite alternate;
-        -webkit-animation: ElementAnimation 1s ease-in-out infinite alternate;
+        animation: animate infinite;
       }
       .loading::after {
         content: "Loading.....";
-        color: #fff;
-        font-size: 3rem;
-        font-weight: 800;
-        letter-spacing: 1rem;
+        font-family: Impact, sans-serif;
+        font-size: 4rem;
+        letter-spacing: 2px;
+        background: linear-gradient(90deg, #90ee90, #fff, #000);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: rgba(255, 255, 255, 0);
+        background-repeat: no-repeat;
+        background-size: 80%;
+
+        animation: animate 5s infinite;
       }
       @media (max-width: 576px) {
         .loading::after {
@@ -44,22 +49,19 @@
 
       .container-spinner {
         align-items: center;
-        background-color: white;
+        background-color: #000;
         display: flex;
         height: 100vh;
         justify-content: center;
         width: 100vw;
       }
 
-      @keyframes ElementAnimation {
+      @keyframes animate {
         0% {
-          text-shadow: 0 0 5px rgba(0, 212, 255, 1),
-            0 0 10px rgba(0, 212, 255, 1), 0 0 20px rgba(2, 0, 36, 1),
-            0 0 40px rgba(2, 0, 36, 1);
+          background-position: -500%;
         }
         100% {
-          text-shadow: 0 0 5px rgba(121, 9, 49, 1), 0 0 10px rgba(121, 9, 49, 1),
-            0 0 20px rgba(121, 9, 49, 1), 0 0 40px rgba(121, 9, 49, 1);
+          background-position: 500%;
         }
       }
     </style>

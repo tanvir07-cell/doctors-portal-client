@@ -5,17 +5,20 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home/Home/Home";
 import About from "./Pages/About/About";
 import Appointment from "./Pages/Appointment/Appointment";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const [loading, setLoading] = useState(true);
   const spinner = document.getElementById("spinner");
-  if (spinner) {
-    setTimeout(() => {
-      spinner.style.display = "none";
-      setLoading(false);
-    }, 2000);
-  }
+  useEffect(() => {
+    if (spinner) {
+      setTimeout(() => {
+        spinner.style.display = "none";
+        setLoading(false);
+      }, 2000);
+    }
+  }, [spinner]);
+
   return (
     !loading && (
       <div className="App max-w-7xl mx-auto">
