@@ -24,10 +24,53 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <style>
+      .loading {
+        animation: ElementAnimation 1s ease-in-out infinite alternate;
+        -webkit-animation: ElementAnimation 1s ease-in-out infinite alternate;
+      }
+      .loading::after {
+        content: "Loading.....";
+        color: #fff;
+        font-size: 3rem;
+        font-weight: 800;
+        letter-spacing: 1rem;
+      }
+      @media (max-width: 576px) {
+        .loading::after {
+          font-size: 1.5rem;
+        }
+      }
+
+      .container-spinner {
+        align-items: center;
+        background-color: white;
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        width: 100vw;
+      }
+
+      @keyframes ElementAnimation {
+        0% {
+          text-shadow: 0 0 5px rgba(0, 212, 255, 1),
+            0 0 10px rgba(0, 212, 255, 1), 0 0 20px rgba(2, 0, 36, 1),
+            0 0 40px rgba(2, 0, 36, 1);
+        }
+        100% {
+          text-shadow: 0 0 5px rgba(121, 9, 49, 1), 0 0 10px rgba(121, 9, 49, 1),
+            0 0 20px rgba(121, 9, 49, 1), 0 0 40px rgba(121, 9, 49, 1);
+        }
+      }
+    </style>
     <title>React App</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="spinner" class="container-spinner">
+      <div class="loading"></div>
+    </div>
+
     <div id="root"></div>
     <!--
       This HTML file is a template.
