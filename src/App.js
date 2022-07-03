@@ -6,6 +6,9 @@ import Home from "./Pages/Home/Home/Home";
 import About from "./Pages/About/About";
 import Appointment from "./Pages/Appointment/Appointment";
 import { useEffect, useState } from "react";
+import Login from "./Pages/Login/Login";
+import SignUp from "./Pages/Login/SignUp";
+import RequireAuth from "./Pages/Login/RequireAuth";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -27,10 +30,17 @@ function App() {
           <Route path="/" element={<Home></Home>}></Route>
           <Route
             path="/appointment"
-            element={<Appointment></Appointment>}
+            element={
+              <RequireAuth>
+                <Appointment></Appointment>
+              </RequireAuth>
+            }
           ></Route>
 
           <Route path="/about" element={<About></About>}></Route>
+          <Route path="/login" element={<Login></Login>}></Route>
+
+          <Route path="/signup" element={<SignUp></SignUp>}></Route>
         </Routes>
       </div>
     )
