@@ -11,6 +11,12 @@ const Navbar = () => {
   const [user] = useAuthState(auth);
   const [show, setShow] = useState(false);
 
+  const logOut = () => {
+    signOut(auth);
+    // after logOut also the accessToken remove from the localStorage:
+    localStorage.removeItem("accessToken");
+  };
+
   const menuItems = (
     <>
       <li>
@@ -35,7 +41,7 @@ const Navbar = () => {
       )}
       <li>
         {user ? (
-          <button onClick={() => signOut(auth)} className="btn btn-ghost">
+          <button onClick={logOut} className="btn btn-ghost">
             LogOut
           </button>
         ) : (
@@ -51,7 +57,7 @@ const Navbar = () => {
   );
   return (
     <div className="nav-bg">
-      <div class="navbar bg-gradient-to-r from-secondary to-primary text-white">
+      <div class="navbar bg-gradient-to-r from-primary to-secondary text-white">
         <div class="navbar-start">
           <div class="dropdown">
             <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -79,7 +85,7 @@ const Navbar = () => {
             {show && (
               <ul
                 tabindex="0"
-                class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 bg-gradient-to-r from-secondary to-primary text-white"
+                class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52  bg-gradient-to-r from-primary to-secondary text-white"
               >
                 {menuItems}
               </ul>

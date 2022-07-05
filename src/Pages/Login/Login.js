@@ -12,6 +12,7 @@ import LoginLoading from "../Shared/LoginLoading";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { BiShow, BiHide } from "react-icons/bi";
+import useToken from "../../hooks/useToken";
 
 const Login = () => {
   const [showPass, setShowPass] = useState(false);
@@ -22,6 +23,7 @@ const Login = () => {
 
   const [sendPasswordResetEmail, sending, passwordResetError] =
     useSendPasswordResetEmail(auth);
+  const [token] = useToken(user || googleUser);
 
   const {
     register,
@@ -34,11 +36,10 @@ const Login = () => {
   const from = location.state?.from?.pathname || "/";
 
   useEffect(() => {
-    if (user) {
-      console.log(user);
+    if (token) {
       navigate(from, { replace: true });
     }
-  }, [from, navigate, user]);
+  }, [from, navigate, token]);
 
   if (loading || googleLoading) {
     return <LoginLoading></LoginLoading>;
@@ -69,7 +70,7 @@ const Login = () => {
     }
   };
   return (
-    <div className="flex h-screen items-center justify-center">
+    <div className="flex h-screen items-center justify-center  ">
       <div class="card w-96  shadow-xl ">
         <div class="card-body">
           <h2 class="text-center text-2xl font-bold">Login</h2>
@@ -77,14 +78,14 @@ const Login = () => {
           {/* react-hooks-form */}
           <form onSubmit={handleSubmit(onSubmit)}>
             {/* daisy ui form input label: */}
-            <div class="form-control w-full max-w-xs">
+            <div class="form-control w-full max-w-xs ">
               <label class="label">
                 <span class="label-text">Email</span>
               </label>
               <input
                 type="email"
                 placeholder="Type here"
-                class="input input-bordered w-full max-w-xs"
+                className="input input-bordered input-border-style"
                 {...register("email", {
                   required: {
                     value: true,
@@ -120,7 +121,7 @@ const Login = () => {
                 <input
                   type={showPass ? "text" : "password"}
                   placeholder="Password"
-                  className="input input-bordered w-full max-w-xs "
+                  className="input input-bordered w-full max-w-xs input-border-style"
                   {...register("password", {
                     required: {
                       value: true,
@@ -162,7 +163,7 @@ const Login = () => {
 
             <input
               type="submit"
-              className="btn text-white w-full max-w-xs"
+              className="btn text-white w-full max-w-xs "
               value="login"
             />
           </form>

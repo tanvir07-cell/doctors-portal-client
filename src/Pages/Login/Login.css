@@ -1,3 +1,16 @@
 .error-message::before {
   content: "❌ ";
 }
+.input-border-style {
+  background: linear-gradient(#222, #222),
+    linear-gradient(to right, #0fcfec, purple);
+  background-origin: padding-box, border-box;
+  background-repeat: no-repeat;
+  /*thisisimportant*/
+  border: 2px solid transparent;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}

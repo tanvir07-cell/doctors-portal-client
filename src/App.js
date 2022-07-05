@@ -12,6 +12,8 @@ import RequireAuth from "./Pages/Login/RequireAuth";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import MyAppointment from "./Pages/Dashboard/MyAppointment";
 import MyReview from "./Pages/Dashboard/MyReview";
+import MyHistory from "./Pages/Dashboard/MyHistory";
+import Users from "./Pages/Dashboard/Users";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -51,6 +53,8 @@ function App() {
             {/* nested route: */}
             <Route index element={<MyAppointment></MyAppointment>}></Route>
             <Route path="review" element={<MyReview></MyReview>}></Route>
+            <Route path="history" element={<MyHistory></MyHistory>}></Route>
+            <Route path="users" element={<Users></Users>}></Route>
           </Route>
 
           <Route path="/about" element={<About></About>}></Route>

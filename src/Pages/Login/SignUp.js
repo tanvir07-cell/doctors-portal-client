@@ -10,6 +10,7 @@ import { useForm } from "react-hook-form";
 import LoginLoading from "../Shared/LoginLoading";
 import { Link, useNavigate } from "react-router-dom";
 import { BiShow, BiHide } from "react-icons/bi";
+import useToken from "../../hooks/useToken";
 
 const SignUp = () => {
   const [showPass, setShowPass] = useState(false);
@@ -17,6 +18,7 @@ const SignUp = () => {
     useSignInWithGoogle(auth);
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+  const [token] = useToken(user || googleUser);
 
   const {
     register,
@@ -25,8 +27,7 @@ const SignUp = () => {
   } = useForm();
 
   const navigate = useNavigate();
-  if (user || googleUser) {
-    console.log(user || googleUser);
+  if (token) {
     navigate("/appointment");
   }
 
@@ -63,7 +64,7 @@ const SignUp = () => {
               <input
                 type="text"
                 placeholder="Your Name"
-                class="input input-bordered w-full max-w-xs"
+                class="input input-bordered w-full max-w-xs input-border-style"
                 {...register("name", {
                   required: {
                     value: true,
@@ -97,7 +98,7 @@ const SignUp = () => {
               <input
                 type="email"
                 placeholder="Type here"
-                class="input input-bordered w-full max-w-xs"
+                class="input input-bordered w-full max-w-xs input-border-style"
                 {...register("email", {
                   required: {
                     value: true,
@@ -133,7 +134,7 @@ const SignUp = () => {
                 <input
                   type={showPass ? "text" : "password"}
                   placeholder="Password"
-                  className="input input-bordered w-full max-w-xs "
+                  className="input input-bordered w-full max-w-xs input-border-style"
                   {...register("password", {
                     required: {
                       value: true,
