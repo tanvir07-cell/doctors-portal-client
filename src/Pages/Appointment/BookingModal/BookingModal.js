@@ -34,29 +34,17 @@ const BookingModal = ({ treatment, date, setTreatment, refetch }) => {
       },
       body: JSON.stringify(booking),
     })
-      .then((response) => response.json())
+      .then((res) => res.json())
       .then((data) => {
-        console.log("Success:", data);
-
-        if (data?.success) {
-          toast.success(
-            `You successfully booked ${treatment} at ${date} at ${slot}`,
-            { id: 1 }
-          );
+        if (data.success) {
+          window.alert(`Appointment is set, ${formattedDate} at ${slot}`);
         } else {
-          toast.error(
-            `Already booked ${booking?.treatment} at ${booking?.date} at ${booking?.slot}`,
-            { id: 2 }
+          window.alert(
+            `Already have and appointment on ${data.booking?.date} at ${data.booking?.slot}`
           );
         }
-
-        refetch();
-
-        // after clicking submit button the modal is gone
         setTreatment(null);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
+        refetch();
       });
   };
   return (

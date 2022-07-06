@@ -9,6 +9,7 @@ import { ImCross } from "react-icons/im";
 
 const Navbar = () => {
   const [user] = useAuthState(auth);
+  console.log(user);
   const [show, setShow] = useState(false);
 
   const logOut = () => {
@@ -35,19 +36,30 @@ const Navbar = () => {
         <Link to="/about">About</Link>
       </li>
       {user && (
-        <li>
-          <Link to="/dashboard">Dashboard</Link>
-        </li>
+        <>
+          {" "}
+          <li>
+            <Link to="/dashboard">Dashboard</Link>
+          </li>
+          <li>
+            <div class="avatar online">
+              <div class="w-10 rounded-full">
+                <img src={user?.photoURL} alt="" />
+              </div>
+            </div>
+          </li>
+        </>
       )}
       <li>
         {user ? (
-          <button onClick={logOut} className="btn btn-ghost">
+          <Link onClick={logOut} to>
             LogOut
-          </button>
+          </Link>
         ) : (
           <Link to="/login">Login</Link>
         )}
       </li>
+
       {/* <li>
         <Link to>
           <DarkMode></DarkMode>

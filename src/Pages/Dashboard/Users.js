@@ -5,8 +5,17 @@ import User from "./User";
 
 const Users = () => {
   // fetching data from backend using react-query:
-  const { data: users, isLoading } = useQuery("user", () =>
-    fetch("http://localhost:5000/user").then((res) => res.json())
+  const {
+    data: users,
+    isLoading,
+    refetch,
+  } = useQuery("user", () =>
+    fetch("http://localhost:5000/user", {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => res.json())
   );
   if (isLoading) {
     return <LoginLoading></LoginLoading>;
@@ -17,14 +26,19 @@ const Users = () => {
         <thead>
           <tr>
             <th></th>
-            <th>Name</th>
+            <th>Email</th>
             <th>Job</th>
-            <th>Favorite Color</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           {users?.map((user, index) => (
-            <User user={user} key={user?.id} index={index}></User>
+            <User
+              user={user}
+              key={user?.id}
+              index={index}
+              refetch={refetch}
+            ></User>
           ))}
         </tbody>
       </table>
