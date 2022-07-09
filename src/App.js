@@ -16,6 +16,8 @@ import MyHistory from "./Pages/Dashboard/MyHistory";
 import Users from "./Pages/Dashboard/Users";
 import RequireAdmin from "./Pages/Login/RequireAdmin";
 import AddDoctors from "./Pages/Dashboard/AddDoctors";
+import ManageDoctors from "./Pages/Dashboard/ManageDoctors";
+import Payment from "./Pages/Dashboard/Payment";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -31,7 +33,7 @@ function App() {
 
   return (
     !loading && (
-      <div className="App  max-w-7xl mx-auto">
+      <div className="App  max-w-7xl mx-auto mockup-window border bg-base-300">
         <Navbar></Navbar>
         <Routes>
           <Route path="/" element={<Home></Home>}></Route>
@@ -56,6 +58,7 @@ function App() {
             <Route index element={<MyAppointment></MyAppointment>}></Route>
             <Route path="review" element={<MyReview></MyReview>}></Route>
             <Route path="history" element={<MyHistory></MyHistory>}></Route>
+            <Route path="payment/:id" element={<Payment></Payment>}></Route>
             <Route
               path="users"
               element={
@@ -70,6 +73,15 @@ function App() {
               element={
                 <RequireAdmin>
                   <AddDoctors></AddDoctors>
+                </RequireAdmin>
+              }
+            ></Route>
+
+            <Route
+              path="manageDoctors"
+              element={
+                <RequireAdmin>
+                  <ManageDoctors></ManageDoctors>
                 </RequireAdmin>
               }
             ></Route>
